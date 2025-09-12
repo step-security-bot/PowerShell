@@ -17,5 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
       - name: check reminders and notify
         uses: agrc/reminder-action@3095f64f8f0c26c751bee802cb1008ece5953078 # v1.0.18

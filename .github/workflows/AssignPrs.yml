@@ -13,6 +13,11 @@ jobs:
       issues: write
       pull-requests: write
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
       - uses: wow-actions/auto-assign@67fafa03df61d7e5f201734a2fa60d1ab111880d # v3.0.2
         if: github.event.issue.pull_request
         with:
